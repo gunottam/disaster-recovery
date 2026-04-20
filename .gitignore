@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+/lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Virtual environments
+venv/
+.env
+.venv
+
+# macOS
+.DS_Store
+
+# Large Data & Geography Files
+*.csv
+*.geojson
+*.gml
+*.html
+project/cache/
+project/output/
+
+# Documents (optional to exclude if they are just temporary or we can keep PDFs)
+# Let's keep PDFs if they are reports. Wait no, PDFs can be large, but let's check sizes.

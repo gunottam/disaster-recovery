@@ -1,72 +1,107 @@
-# Disaster Recovery AI Project
+# 🌍 AI-Driven Disaster Recovery & Infrastructure Planning
 
-An AI-driven approach to disaster recovery and critical infrastructure planning, specifically analyzing data like the 2015 Nepal earthquake. This project uses geographical data analysis, graph networks, and artificial intelligence to assist in emergency response and recovery planning.
+An advanced analytical and interactive platform designed to assess infrastructure damage, analyze critical network dependencies, and generate AI-powered recovery plans. This project utilizes geospatial data (specifically analyzing the devastating 2015 Nepal earthquake) to demonstrate how artificial intelligence and graph theory can assist emergency response teams in prioritizing rebuilding efforts.
 
-## Overview
+---
 
-Following a major disaster, recovering critical infrastructure (roads, buildings, hospitals) requires prioritizing resources effectively. This project builds dependency graphs of urban network infrastructure (e.g., Kathmandu roads) and uses AI to generate step-by-step, empathetic recovery narratives and priority maps.
+## ✨ Key Features
 
-## Features
+- 🗺️ **Geospatial Network Analysis:** Leverages `OSMnx`, `NetworkX`, and `GeoPandas` to map out city infrastructure, forming dependency graphs of roads and critical buildings.
+- 🚨 **Damage Assessment & Prioritization:** Dynamically calculates recovery priority scores based on damage severity, structural importance, and network centrality.
+- 🤖 **AI Recovery Narratives:** Integrates with **Groq's LLM API** to automatically generate empathetic, professional, and actionable step-by-step rebuilding plans for policymakers and rescue teams.
+- 🚇 **Metro Route Optimizer:** A standalone C++ and Qt-based application for calculating optimal transit and evacuation routes during crisis recovery.
+- 📊 **Interactive Web Dashboard:** A `Streamlit` interface integrating `Folium` maps to visualize damaged zones, critical networks, and prioritized recovery paths in real-time.
 
-- **Interactive Map Visualization:** A Streamlit-based user interface using Folium to visualize damaged infrastructure and priority zones on a map.
-- **AI-Powered Recovery Planning:** Integrates with the Groq API (via OpenAI's Python client) to generate professional and data-driven recovery plans based on dynamically calculated priority scores.
-- **Infrastructure Dependency Graphs:** Explores complex networks using geospatial data (`.shp`, `.graphml`, and `.geojson`) to determine critical paths and dependencies.
-- **Metro Route Optimizer:** A C++ based sub-project built with Qt for calculating and visualizing optimal transit routes.
-- **Rich Data Analysis:** Deep-dive exploratory data analysis (EDA) and network building available in Jupyter Notebooks (`project.ipynb`, `infra.ipynb`).
+---
 
-## Tech Stack
+## 📂 Repository Structure
 
-- **Python:** Data processing and machine learning pipelines.
-- **Streamlit & Folium:** For the interactive web frontend and map visualization.
-- **Pandas & GeoPandas / NetworkX / OSMnx:** For geospatial data wrangling and graph construction.
-- **Groq API:** Fast LLM inference for generating recovery narratives.
-- **C++ & Qt:** For the standalone Metro Route Optimizer module.
+The workspace is organized into several key components:
 
-## Setup and Installation
+```text
+📦 disaster-recovery
+├── 📂 project/
+│   ├── 📂 ui/                       # Streamlit web application & Groq AI integration
+│   ├── 📂 Metro-Route-Optimizer/    # C++ / Qt module for specialized route planning
+│   ├── 📂 lib/                      # Frontend libraries (Tom-Select, Vis.js)
+│   ├── 📓 project.ipynb             # Core data science, EDA, and model training
+│   ├── 📓 infra.ipynb               # Infrastructure graph building notebook
+│   └── 🗃️ *Geospatial Data*         # Shapefiles (.shp), graphml, proxy maps (ignored via .gitignore if large)
+├── 📄 disaster_recovery_arch.pdf    # System architecture diagram
+├── 📄 PROJECT PROPOSAL.pdf          # Initial project proposal and research outline
+├── 📄 report.pdf                    # Comprehensive project documentation
+└── 📄 README.md                     # You are here!
+```
 
-### Prerequisites
+---
+
+## 🛠️ Tech Stack
+
+**Data Science & AI:**
 - Python 3.10+
-- [Git](https://git-scm.com/)
-- (Optional) C++/Qt environment if you wish to run the Metro Route Optimizer.
+- Pandas / GeoPandas
+- OSMnx / NetworkX (Graph Theory & Dependency mapping)
+- Groq API (LLM Inference using the OpenAI Python Client)
+
+**Web Dashboard / UI:**
+- Streamlit
+- Folium / Streamlit-Folium
+
+**Systems & Route Optimization:**
+- C++
+- Qt Framework
+
+---
+
+## 🚀 Setup & Installation
 
 ### 1. Clone the Repository
-\`\`\`bash
+```bash
 git clone https://github.com/gunottam/disaster-recovery.git
 cd disaster-recovery
-\`\`\`
+```
 
-### 2. Environment Setup (Python UI)
-It is recommended to use a virtual environment.
-\`\`\`bash
+### 2. Dashboard / AI Setup (Python)
+
+It is highly recommended to use a virtual environment to manage dependencies:
+
+```bash
+# Create and activate a virtual environment
 python -m venv venv
-source venv/bin/activate  # On Windows, use: venv\Scripts\activate
-\`\`\`
+source venv/bin/activate  # Windows: venv\Scripts\activate
 
-Install the UI dependencies:
-\`\`\`bash
-# Assuming within the project/ui directory
+# Navigate to the UI directory
 cd project/ui
+
+# Install the required Python packages
 pip install -r requirements.txt
-\`\`\`
+```
 
 ### 3. API Key Configuration
-The Streamlit application uses the Groq API for generating response plans. 
-1. Copy the example environment file:
-   \`\`\`bash
+
+The disaster recovery narrative generation uses the **Groq API**. You must supply your API key to use this feature:
+
+1. Create a `.env` file in the `project/ui/` directory:
+   ```bash
    cp .env.example .env
-   \`\`\`
-2. Open \`.env\` and add your Groq API key:
-   \`\`\`
-   GROQ_API_KEY=your_actual_api_key_here
-   \`\`\`
+   ```
+2. Open the `.env` file and insert your Groq API key:
+   ```env
+   GROQ_API_KEY=gsk_your_actual_groq_api_key_here
+   ```
 
-## Usage
+### 4. Running the Dashboard
 
-To start the disaster recovery dashboard:
-
-\`\`\`bash
-cd project/ui
+```bash
+# Ensure you are inside the project/ui directory and venv is active
 streamlit run app.py
-\`\`\`
+```
+*The app will automatically open in your default browser at `http://localhost:8501`.*
 
-Navigate to `http://localhost:8501` in your browser to view the interactive dashboard.
+---
+
+## 🚇 Metro Route Optimizer (C++)
+For the C++ routing application:
+1. Ensure you have **Qt Creator** or the **Qt Framework** installed on your system.
+2. Open `project/Metro-Route-Optimizer/MetroProject.pro` in Qt Creator.
+3. Build and Run the project via the IDE to launch the desktop application.
